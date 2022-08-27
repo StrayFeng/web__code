@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .nav {
+            width: 700px;
+            height: 60px;
+            margin-top: 50px;
+            margin-left: 50%;
+            transform: translateX(-350px);
+        }
+
+        .nav div:nth-child(2) {
+            /* margin-left: 165px;
+            margin-right: 165px; */
+            margin: 0px 165px 0px;
+        }
+
+        .box {
+            position: relative;
+            display: inline-block;
+            width: 120px;
+            height: 60px;
+            background-color: rgb(219, 64, 64);
+            line-height: 60px;
+            text-align: center;
+            color: whitesmoke;
+        }
+
+        .box::before,
+        .box::after {
+            content: "";
+            position: absolute;
+            top: 30px;
+            width: 30px;
+            height: 30px;
+        }
+
+        .box::before {
+            left: -29px;
+        }
+
+        .box::after {
+            left: 119px;
+        }
+
+        .box1 {
+            background-color: orange;
+        }
+
+        .box1::before {
+            background: radial-gradient(at 0% 0%, transparent 70%, orange 71%);
+        }
+
+        .box1::after {
+            background: radial-gradient(at 100% 0%, transparent 70%, orange 71%);
+        }
+
+        .box2 {
+            background-color: violet;
+        }
+
+        .box2::before {
+            background: radial-gradient(at 0% 0%, transparent 70%, violet 71%);
+        }
+
+        .box2::after {
+            background: radial-gradient(at 100% 0%, transparent 70%, violet 71%);
+        }
+
+        .box3 {
+            background-color: cyan;
+        }
+
+        .box3::before {
+            background: radial-gradient(at 0% 0%, transparent 70%, cyan 71%);
+        }
+
+        .box3::after {
+            background: radial-gradient(at 100% 0%, transparent 70%, cyan 71%);
+        }
+
+        .content {
+            width: 100%;
+            height: 500px;
+            background-color: rgb(96, 154, 227);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="nav">
+        <div class="box1 box">Tab1</div>
+        <div class="box2 box">Tab2</div>
+        <div class="box3 box">Tab3</div>
+    </div>
+    <div class="content"></div>
+</body>
+
+</html>
