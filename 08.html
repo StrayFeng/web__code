@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>3.2.3使用关系获取集合Page56</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #total {
+            width: 100%;
+            height: auto;
+        }
+
+        #total #first {
+            margin-top: 30px;
+            width: 100%;
+            text-align: center;
+        }
+
+        #main-menu {
+            list-style: none;
+            width: 100%;
+            height: 20px;
+        }
+
+        #main-menu li {
+            float: left;
+            width: 30%;
+        }
+
+        #main-menu li a {
+            text-decoration: none;
+            color: black;
+        }
+
+        #main-menu li a:hover {
+            text-decoration: underline;
+            color: #0000FF;
+        }
+
+        #middle {
+            width: 100%;
+            height: auto;
+            margin-top: 30px;
+        }
+
+        #middle .p1 {
+            width: 96%;
+            margin: 20px 10px 0 20px;
+        }
+
+        .image {
+            width: 200px;
+            height: 150px;
+            margin-left: 30px;
+        }
+
+        .bgcolor {
+            background-color: #2b542c;
+        }
+
+        .filter {
+            font-weight: bold;
+        }
+
+        .imagestyle {
+            width: 210px;
+            height: 160px;
+            margin-left: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="total">
+        <div id="first">
+            <ul id="main-menu">
+                <li id="home-link"><a href="#">Homepage</a></li>
+                <li id="project-link"><a href="#">Projects</a></li>
+                <li id="blog-link"><a href="#">Blog</a></li>
+            </ul>
+        </div>
+        <div id="middle">
+            <p class="p1">Now i study jQuery Action,this is a book which teach us to learn how to use javascript more
+                easier.I find that people should depend on themselves no matter where they are,what they do. </p>
+            <p class="p1">I plan to join to the Baidu Web university to study the web,in the coming times,i will
+                study more hard and prove myself</p>
+            <img src="../img2.png" alt="this alt is two">
+            <img src="../img3.png" title="this title is three">
+        </div>
+    </div>
+    <script src="../jquery-3.1.1.min.js"></script>
+    <script>
+        /* //3.2.2从集合获取元素
+         //get([index])方法：获取一个或所有集合中匹配的元素，忽略index则返回集合里所有元素。
+         // index为索引参数，可为负数（从集合末尾开始算），超出范围返回undefined。
+         var list=$('li').get();
+         console.log(list);
+         var list1=$('li').get(0);
+         console.log(list1);
+         var list2=$('li')[0];
+         console.log(list2);
+         //eq(index)方法
+         var list3=$('li').eq(1);
+         console.log(list3);
+         var plength=$('#middle').children().length;
+         console.log("middle的直接子元素"+"  "+plength);
+         var flength=$('#first').children().length;
+         console.log("first的直接子元素  "+flength);
+         /!*var plength=$('#main-menu').contents().length;
+         console.log("middle的包括文本节点的长度"+"  "+plength);
+         var flength=$('#first').contents().length;
+         console.log("first的包括文本节点的长度  "+flength);*!/
+         //find()方法,搜索遍历集合中所有元素的子节点-深度优先算法
+         var tlist=$('li');
+         var set=$(tlist).find('a');
+         set[0].onclick=function () {
+            set[0].text="find";
+        };
+         //nextUntil()接受一个选择器参数，插叙你和中所有的兄弟元素直到到达匹配的选择器元素位置。
+         var $listItem=$('#home-link').nextUntil('#blog-link','#project-link');
+         //查询样式为home-link的兄弟元素,排除样式为blog的且样式为project的，第二个参数可选
+         console.log($listItem);*/
+        //3.2.4分隔集合
+        //add(),在集合中添加新元素
+        // $('img[alt],img[title]').addClass('image');//具有alt属性或者title属性的img添加样式image
+        // $('img[alt]').add('img[title]').addClass('image');//在alt的img集合里添加title的img
+        //add()向现有集合中添加元素。传递元素或者数组的直接引用作为add()的参数
+        // $('p').add('<abbr>add方法添加的</abbr>')
+
+        //not()删除元素后原始集合的新副本，可以传递单个元素或者数组的引用来删除元素
+        $('li').not(function (index) {
+            return index == 1;
+        }).addClass('bgcolor');//除了索引是1的li添加bgcolor样式
+
+        //filter(selector)创建一个集合，从新集合中删除不符合selector的元素
+        $('li').filter('[id="home-link"]').addClass('filter');//只有home-link的li里面的字体加粗了
+
+        //获取集合的子集
+        //slice()；slice（start,[end]）start:首元素位置从0开始；
+        // end返回元素的最后位置，索引从0开始，为负数则从末尾开始，忽略则选择到集合末端
+        //$('img,div.wrapper','div').slice(2,3);
+
+        //has(selector)创建并返回新集合，只包含匹配selector选择器的元素
+        $('img').has(['title']).addClass('bgcolor');
+
+        //end()和addBack()方法
+        //end():在当前调用链中结束最近的过滤操作；addBack()把栈上前一个集合的元素添加到当前集合
+        $('img').filter('[alt]').hide().end().addClass('image');//end只是结束最近的过滤操作，
+   // 但是前者造成的变化无法还原
+
+    </script>
+</body>
+
+</html>
